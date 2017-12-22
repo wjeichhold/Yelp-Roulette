@@ -1,11 +1,18 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var biz = require('../database-mongo');
-var request = require('request');
-
+var helper = require('../helpers/yelp.js');
 var app = express();
 
 app.use(express.static(__dirname + '/../react-client/dist'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+app.post('/biz', function(req, res) {
+  console.log(req.body)
+  helper.yelpGetter(req.body.searchTerm)
+})
 
 app.get('/biz', function (req, res) {
   biz12.selectAll(function(err, data) {

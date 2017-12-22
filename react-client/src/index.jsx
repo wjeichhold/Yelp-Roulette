@@ -13,11 +13,13 @@ class App extends React.Component {
   }
 
   search(searchTerm) {
+    console.log(searchTerm)
     $.ajax({
-      type: 'POST',
-      url: ''
-
-})
+      type: "POST",
+      url: "/biz",
+      data: {searchTerm: searchTerm},
+      success: function(data) {console.log(data)}
+    })
 
   }
 
