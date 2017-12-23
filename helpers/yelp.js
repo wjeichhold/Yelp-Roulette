@@ -1,6 +1,5 @@
 var request = require('request');
 var parser = require('body-parser');
-var config = require('../config.js');
 var request = require('request');
 var saver = require('../database-mongo/index.js');
 
