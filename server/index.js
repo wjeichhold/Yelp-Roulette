@@ -3,7 +3,6 @@ var bodyParser = require('body-parser');
 var bizDb = require('../database-mongo');
 var helper = require('../helpers/yelp.js');
 var app = express();
-var db = require('../server/index.js')
 
 app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());

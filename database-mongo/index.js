@@ -14,14 +14,14 @@ db.once('open', function() {
 var bizSchema = mongoose.Schema({
   pictureUrl: String,
   bizName: String,
-  bizUrl: String
-  // }, {timestamps: {createdAt: 'created_at'}}
-});
+  bizUrl: {type: String, unique: true, required: true},
+  }, {timestamps: {createdAt: 'created_at'}}
+);
 
 var Biz = mongoose.model('Biz', bizSchema);
 
 var selectAll = function(callback) {
-  Biz.find({}, function(err, items) {
+  Biz.find({}).sort('-date').limit(9).exec(function(err, items) {
     if(err) {
       callback(err, null);
     } else {
