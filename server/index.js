@@ -8,6 +8,7 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+console.log('go away please')
 
 app.post('/biz', function(req, res) {
   console.log(req.body)
