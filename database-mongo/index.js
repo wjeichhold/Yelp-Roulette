@@ -1,4 +1,4 @@
-var connectTo = 'mongodb://<wjeichhold>:<hackreactor>@ds163656.mlab.com:63656/heroku_5k9x46hj'
+var connectTo = 'mongodb://wjeichhold:hackreactor@ds163656.mlab.com:63656/heroku_5k9x46hj'
 
 var mongoose = require('mongoose');
 mongoose.connect(connectTo, {useMongoClient: true});
