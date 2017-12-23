@@ -21,7 +21,7 @@ var bizSchema = mongoose.Schema({
 var Biz = mongoose.model('Biz', bizSchema);
 
 var selectAll = function(callback) {
-  Biz.find({}).sort('-date').limit(9).exec(function(err, items) {
+  Biz.find({}).sort({created_at: -1}).limit(9).exec(function(err, items) {
     if(err) {
       callback(err, null);
     } else {

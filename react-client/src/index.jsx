@@ -15,7 +15,6 @@ class App extends React.Component {
   }
 
   search(searchTerm) {
-    console.log(searchTerm)
     $.ajax({
       type: "POST",
       url: "/biz",
@@ -51,17 +50,18 @@ class App extends React.Component {
     // navigator.geolocation.getCurrentPosition(success, error, options);
 
 
-    // $.ajax({
-    //   url: '/biz', 
-    //   success: (data) => {
-    //     this.setState({
-    //       items: data
-    //     })
-    //   },
-    //   error: (err) => {
-    //     console.log('err', err);
-    //   }
-    // });
+    $.ajax({
+      url: '/biz', 
+      success: (data) => {
+        this.setState({
+          items: data
+        })
+      console.log(this.state)
+      },
+      error: (err) => {
+        console.log('err', err);
+      }
+    });
   }
 
   render () {

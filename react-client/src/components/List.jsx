@@ -4,7 +4,7 @@ import ListItem from './ListItem.jsx';
 const List = (props) => (
   <div>
     There are { props.items.length } items.
-    { props.items.map(item => <ListItem item={item}/>)}
+    { props.items.map((item, index) => (<ListItem item={item}/>))}
   </div>
 )
 

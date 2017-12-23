@@ -11,10 +11,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/biz', function(req, res) {
   helper.yelpGetter(req.body.searchTerm)
+  res.sendStatus(200)
+  res.end('all good')
 })
 
 app.get('/biz', function (req, res) {
-  biz12.selectAll(function(err, data) {
+  bizDb.selectAll(function(err, data) {
     if(err) {
       res.sendStatus(500);
     } else {
