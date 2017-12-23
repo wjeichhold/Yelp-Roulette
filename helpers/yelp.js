@@ -6,7 +6,7 @@ var saver = require('../database-mongo/index.js');
 
 var yelpGetter = function(term, callback) {
   var options = {
-    url: 'https://api.yelp.com/v3/businesses/search?term=' + term + '&location=11222&limit=9&sort_by=distance&open_now=true',
+    url: 'https://api.yelp.com/v3/businesses/search?term=' + term + '&location=10017&limit=9&sort_by=distance&open_now=true',
     headers: {
       'Authorization': `Bearer ${config.KEY}`
     }
