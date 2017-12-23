@@ -10,7 +10,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.post('/biz', function(req, res) {
-  helper.yelpGetter(req.body.searchTerm, (arg) => {
+  console.log(req.body)
+  helper.yelpGetter(req.body.searchTerm, req.body.long, req.body.lat, (arg) => {
     res.sendStatus(200)    
     res.end(arg)
     })

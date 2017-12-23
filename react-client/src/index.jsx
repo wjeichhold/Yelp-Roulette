@@ -13,11 +13,11 @@ class App extends React.Component {
     }
   }
 
-  search(searchTerm) {
+  search(searchTerm, long, lat) {
     $.ajax({
       type: "POST",
       url: "/biz",
-      data: {searchTerm: searchTerm, long: this.state.long, lat: this.state.lat},
+      data: {searchTerm: searchTerm, long: long, lat: lat},
       success: (data) => {
         $.ajax({
       url: '/biz', 

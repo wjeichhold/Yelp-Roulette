@@ -5,8 +5,8 @@ class Search extends React.Component {
     super(props)
     this.state = {
       searchTerm: '',
-      long: '',
-      lat: ''
+      long: null,
+      lat: null
     }
     this.onChange = this.onChange.bind(this)
     this.sendSearch = this.sendSearch.bind(this)
@@ -21,7 +21,12 @@ class Search extends React.Component {
   }
 
   sendSearch() {
-    this.props.parentSearch(this.state.searchTerm);
+    if (this.state.long !== null) {
+    this.props.parentSearch(this.state.searchTerm, this.state.long, this.state.lat);
+    } else {
+    window.alert('aye lemme get your location first chill')
+    }
+    
   }
 
   getLocation() {
