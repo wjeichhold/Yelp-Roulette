@@ -4,7 +4,7 @@ var config = require('../config.js');
 var request = require('request');
 var saver = require('../database-mongo/index.js');
 
-var yelpGetter = function(term) {
+var yelpGetter = function(term, callback) {
   var options = {
     url: 'https://api.yelp.com/v3/businesses/search?term=' + term + '&location=11222&limit=9&sort_by=distance&open_now=true',
     headers: {
@@ -23,7 +23,7 @@ var yelpGetter = function(term) {
       saver.saver(newObj);
     }
   })
-
+    callback('done')
 }
 
 module.exports.yelpGetter = yelpGetter;

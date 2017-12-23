@@ -31,13 +31,11 @@ var selectAll = function(callback) {
 };
 
 var saver = function(data) {
-  // console.log(data)
   var saveIt = new Biz(data)
   saveIt.save(function(err) {
     if (err) {
     return err
     }
-  console.log('saved!')
   })
 
 

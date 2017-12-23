@@ -10,7 +10,8 @@ class App extends React.Component {
     this.state = { 
       items: [],
       long: null,
-      lat: null
+      lat: null,
+      checker: ''
     }
   }
 
@@ -19,35 +20,47 @@ class App extends React.Component {
       type: "POST",
       url: "/biz",
       data: {searchTerm: searchTerm, long: this.state.long, lat: this.state.lat},
-      success: function(data) {console.log(data)}
+      success: (data) => {
+        $.ajax({
+      url: '/biz', 
+      success: (data) => {
+        this.setState({
+          items: data
+        })
+      },
+      error: (err) => {
+        console.log('err', err);
+      }
+    });
+
+}
     })
 
   }
 
   componentDidMount() {
-    // var options = {
-    //   enableHighAccuracy: true,
-    //   timeout: 5000,
-    //   maximumAge: 0
-    // };
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
 
-    // var success = function(pos) {
-    //   var long = pos.coords.longitude;
-    //   var lat = pos.coords.latitude;
-    //   console.log(long, lat)
-    //   this.setState({long: long})
-    //   // console.log(this.state)
-    //   // console.log('Your current position is:');
-    //   // console.log(`Latitude : ${crd.latitude}`);
-    //   // console.log(`Longitude: ${crd.longitude}`);
-    //   // console.log(`More or less ${crd.accuracy} meters.`);
-    // };
+    var success = function(pos) {
+      var long = pos.coords.longitude;
+      var lat = pos.coords.latitude;
+      console.log(long, lat)
+      // console.log(this.state)
+      // console.log('Your current position is:');
+      // console.log(`Latitude : ${crd.latitude}`);
+      // console.log(`Longitude: ${crd.longitude}`);
+      // console.log(`More or less ${crd.accuracy} meters.`);
+    };
 
-    // var error = function(err) {
-    //   console.warn(`ERROR(${err.code}): ${err.message}`);
-    // };
+    var error = function(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    };
 
-    // navigator.geolocation.getCurrentPosition(success, error, options);
+    navigator.geolocation.getCurrentPosition(success, error, options);
 
 
     $.ajax({
@@ -56,7 +69,6 @@ class App extends React.Component {
         this.setState({
           items: data
         })
-      console.log(this.state)
       },
       error: (err) => {
         console.log('err', err);
