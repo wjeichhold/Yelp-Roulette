@@ -2,6 +2,7 @@ var request = require('request');
 var parser = require('body-parser');
 var config = require('../config.js');
 var request = require('request');
+var saver = require('../database-mongo/index.js');
 
 var yelpGetter = function(term) {
   var options = {
@@ -12,8 +13,15 @@ var yelpGetter = function(term) {
   }  
 
   request(options, function(err, req, body) {
-    console.log(JSON.parse(body))
-
+    var body = JSON.parse(body);
+    for (var i = 0; i < body.businesses.length; i++) {
+      var newObj = {
+        pictureUrl: body.businesses[i].image_url,
+        bizName: body.businesses[i].name,
+        bizUrl: body.businesses[i].url
+      }
+      saver.saver(newObj);
+    }
   })
 
 }

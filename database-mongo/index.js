@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/biz');
 
 var db = mongoose.connection;
 
@@ -14,10 +14,8 @@ db.once('open', function() {
 var bizSchema = mongoose.Schema({
   pictureUrl: String,
   bizName: String,
-  bizUrl: {
-    type: String,
-    unique: true
-  }
+  bizUrl: String
+  // }, {timestamps: {createdAt: 'created_at'}}
 });
 
 var Biz = mongoose.model('Biz', bizSchema);
@@ -32,9 +30,19 @@ var selectAll = function(callback) {
   });
 };
 
-var saver = function(data, callback) {
+var saver = function(data) {
+  // console.log(data)
+  var saveIt = new Biz(data)
+  saveIt.save(function(err) {
+    if (err) {
+    return err
+    }
+  console.log('saved!')
+  })
 
 
 }
 
 module.exports.selectAll = selectAll;
+module.exports.saver = saver;
+module.exports.db = db;

@@ -1,8 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var biz = require('../database-mongo');
+var bizDb = require('../database-mongo');
 var helper = require('../helpers/yelp.js');
 var app = express();
+var db = require('../server/index.js')
 
 app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());
@@ -10,7 +11,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.post('/biz', function(req, res) {
-  console.log(req.body)
   helper.yelpGetter(req.body.searchTerm)
 })
 
