@@ -8,7 +8,7 @@ var yelpGetter = function(term, long, lat, callback) {
   var options = {
     url: 'https://api.yelp.com/v3/businesses/search?term=' + term + '&latitude=' + lat + '&longitude=' + long + '&limit=9&sort_by=distance&open_now=true',
     headers: {
-      'Authorization': `Bearer ${config.KEY}`
+      'Authorization': `Bearer ${process.env._apikey}`
     }
   }  
 
